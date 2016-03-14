@@ -1,4 +1,4 @@
-django-Toy-Robot
+Toy-Robot
 ==================
 
 A Django App that exposes REST Api's for running a Toy Robot on a given Table. This app is designed to support following features:
