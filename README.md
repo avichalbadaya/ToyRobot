@@ -8,6 +8,7 @@ A Django App that exposes REST Api's for running a Toy Robot on a given Table. T
 3. Move a Robot in certain direction
 4. Rotate a Robot direction left or Right
 5. Api's support CORS (Cross-Origin Resource Sharing).
+6. Unit tests written to test basic functioniong of ToyRobot.
 
 ## Setup ##
 Install required python packages by downloading the source and running:
@@ -27,6 +28,10 @@ Run Django app locally by following command
 >   python manage.py migrate
 
 >   python manage.py default_tables //to create Directions NORTH,EAST,SOUTH,WEST and Table BASE 
+
+## Run Basic Tests using
+
+>   python manage.py test
 
 # Deploy it on Heroku
 
