@@ -18,6 +18,13 @@ Run Django app locally by following command
 
 >   python manage.py runserver 0.0.0.0:8000
 
+## If you are using your own database and not existing sqlite3 then:
+- Add DB configuration to /ToyRobot/settings.py file
+- Also run following commands to prepare Database
+>   python manage.py makemigrations
+>   python manage.py migrate
+>   python manage.py default_tables //to create Directions NORTH,EAST,SOUTH,WEST and Table BASE 
+
 # Deploy it on Heroku
 
 ## Prerequisits
