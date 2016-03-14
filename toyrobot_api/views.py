@@ -51,13 +51,18 @@ class RobotDetail(APIView):
     			serializer = RobotSerializer(robot)
     			return Response(serializer.data, status=status.HTTP_303_SEE_OTHER)
     		elif(move=='position'):
-    			print "HERE"
     			table=Table.objects.get(name="BASE")
     			direction=Direction.objects.get(name=request.data["angle"])
-    			robot.table,robot.dirs,robot.x_cord,robot.y_cord=(table,direction,request.data["x_pos"],request.data["y_pos"])
-    			robot.save()
-    			serializer = RobotSerializer(robot)
-    			return Response(serializer.data, status=status.HTTP_201_CREATED)
+    			x_cord=request.data["x_pos"]
+    			y_cord=request.data["y_pos"]
+    			if CheckTable(x_cord,y_cord,table):
+    				robot.table,robot.dirs,robot.x_cord,robot.y_cord=(table,direction,x_cord,y_cord)
+    				robot.save()
+    				serializer = RobotSerializer(robot)
+    				return Response(serializer.data, status=status.HTTP_201_CREATED)
+    			else:
+    				serializer = RobotSerializer(robot)
+    				return Response(serializer.data, status=status.HTTP_304_NOT_MODIFIED)
     		else:
     			serializer = RobotSerializer(robot)
     			return Response(serializer.data, status=status.HTTP_304_NOT_MODIFIED)
